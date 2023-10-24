@@ -1,3 +1,8 @@
+*{
+    margin:0;
+    padding:0;
+}
+
 body{
     background-color: #A0ACAD;
     display:flex;
@@ -46,4 +51,6 @@ div{
     background: #0D0C1D;
     cursor: grabbing;
 }
-
+p.p1{
+    font-size: 40px;
+}
