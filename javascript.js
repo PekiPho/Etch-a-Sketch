@@ -2,14 +2,16 @@
 const container=document.getElementById('container');
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
-var color=document.getElementById("head").value;
-output.textContent = slider.value;
+var inputColor=document.getElementById("head");
+var color;
 
-createGrid(slider.value);
+output.textContent = slider.value;
 
 slider.oninput = function() {
     output.textContent = this.value;
 }
+
+createGrid(slider.value);
 
 function createGrid(gridSize)
 {
@@ -20,7 +22,8 @@ function createGrid(gridSize)
         for(let j=0;j<gridSize;j++)
         {
         const gridElement=document.createElement('div');
-        
+        gridElement.setAttribute('id','square');
+
         container.appendChild(gridElement);
         }
     }
@@ -29,4 +32,18 @@ function createGrid(gridSize)
 slider.addEventListener('mouseup',()=>{
     createGrid(slider.value);
 });
+
+inputColor.addEventListener('input',()=>{
+    color=inputColor.value;
+});
+
+const pixel=document.querySelectorAll('#square');
+
+pixel.forEach((d)=>{
+
+    d.addEventListener('mouseover',()=>{
+        d.style.backgroundColor=color;
+    });
+});
+
 
