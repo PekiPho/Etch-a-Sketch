@@ -2,6 +2,7 @@
 const container=document.getElementById('container');
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
+var color=document.getElementById("head").value;
 output.textContent = slider.value;
 
 createGrid(slider.value);
@@ -22,8 +23,10 @@ function createGrid(gridSize)
         
         container.appendChild(gridElement);
         }
-        let br=document.createElement('br');
-        container.appendChild(br);
     }
     
 }
+slider.addEventListener('mouseup',()=>{
+    createGrid(slider.value);
+});
+
