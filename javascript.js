@@ -7,11 +7,8 @@ var color;
 
 output.textContent = slider.value;
 
-slider.oninput = function() {
-    output.textContent = this.value;
-}
 
-createGrid(slider.value);
+createGrid(32);
 
 function createGrid(gridSize)
 {
@@ -37,7 +34,7 @@ inputColor.addEventListener('input',()=>{
     color=inputColor.value;
 });
 
-const pixel=document.querySelectorAll('#square');
+var pixel=document.querySelectorAll('#square');
 
 pixel.forEach((d)=>{
 
@@ -46,4 +43,10 @@ pixel.forEach((d)=>{
     });
 });
 
-
+slider.oninput = function() {
+    output.textContent = this.value;
+    createGrid(slider.value);
+    pixel.forEach((d)=>{
+        d.style.backgroundColor='#FFFFFF'
+    });
+}

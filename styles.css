@@ -20,6 +20,7 @@ body>div{
     background-color: white;
     display: grid;
     border: 15px solid #0D0C1D;
+    border-radius: 5%;
 }
 
 .slidecontainer {
