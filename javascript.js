@@ -3,7 +3,8 @@ const container=document.getElementById('container');
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 var inputColor=document.getElementById("head");
-var color;
+var color='#000';
+let pixel;
 
 output.textContent = slider.value;
 
@@ -12,6 +13,7 @@ createGrid(32);
 
 function createGrid(gridSize)
 {
+    clearGrid();
     container.style.gridTemplateColumns=`repeat(${gridSize},1fr)`;
     container.style.gridTemplateRows=`repeat(${gridSize},1fr)`;
     for(let i=0;i<gridSize;i++)
@@ -24,6 +26,14 @@ function createGrid(gridSize)
         container.appendChild(gridElement);
         }
     }
+    pixel=document.querySelectorAll('#square');
+
+    pixel.forEach((d)=>{
+
+        d.addEventListener('mouseover',()=>{
+            d.style.backgroundColor=color;
+        }); 
+    });
     
 }
 slider.addEventListener('mouseup',()=>{
@@ -34,14 +44,7 @@ inputColor.addEventListener('input',()=>{
     color=inputColor.value;
 });
 
-var pixel=document.querySelectorAll('#square');
 
-pixel.forEach((d)=>{
-
-    d.addEventListener('mouseover',()=>{
-        d.style.backgroundColor=color;
-    });
-});
 
 slider.oninput = function() {
     output.textContent = this.value;
@@ -49,4 +52,10 @@ slider.oninput = function() {
     pixel.forEach((d)=>{
         d.style.backgroundColor='#FFFFFF'
     });
+}
+
+function clearGrid(){
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
 }
