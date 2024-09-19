@@ -11,6 +11,11 @@ output.textContent = slider.value;
 
 createGrid(32);
 
+mouseDown=false;
+
+// document.body.onmousedown=()=>(mouseDown=true);
+// document.body.onmouseup=()=>(mouseDown=false);
+
 function createGrid(gridSize)
 {
     clearGrid();
@@ -30,9 +35,17 @@ function createGrid(gridSize)
 
     pixel.forEach((d)=>{
 
-        d.addEventListener('mouseover',()=>{
+        d.onmousedown=()=>(mouseDown=true);
+        d.onmouseup=()=>(mouseDown=false);
+
+        d.addEventListener('mousedown',()=>{
             d.style.backgroundColor=color;
         }); 
+        d.addEventListener('mouseover',()=>{
+            if(!mouseDown)return;
+            d.style.backgroundColor=color;
+        });
+
     });
     
 }
